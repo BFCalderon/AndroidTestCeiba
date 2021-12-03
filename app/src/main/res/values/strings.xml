@@ -1,0 +1,19 @@
+<resources>
+	<string name="app_name">Android Test Ceiba</string>
+	<string name="edit_text_search">Buscar usuario</string>
+	<string name="btn_view_posts">Ver publicaciones</string>
+	<string name="btn_view_comments">Ver comentarios</string>
+	<string name="generic_message_progress">Por favor espere...</string>
+	<string name="generic_error">Ha ocurrido un error inesperado</string>
+	<string name="accept">Aceptar</string>
+	<string name="list_is_empty">List is empty</string>
+	<string name="title_activity_post">PostActivity</string>
+	<!-- Strings used for fragments for navigation -->
+	<string name="first_fragment_label">Users Fragment</string>
+	<string name="second_fragment_label">Post Fragment</string>
+	<string name="next">Next</string>
+	<string name="previous">Previous</string>
+
+	<string name="hello_first_fragment">Hello first fragment</string>
+	<string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>
