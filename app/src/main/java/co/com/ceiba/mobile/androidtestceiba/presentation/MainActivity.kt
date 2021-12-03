@@ -1,12 +1,12 @@
-package co.com.ceiba.mobile.androidtestceiba
+package co.com.ceiba.mobile.androidtestceiba.presentation
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import co.com.ceiba.mobile.androidtestceiba.R
 import co.com.ceiba.mobile.androidtestceiba.databinding.ActivityMainBinding
 
 class MainActivity: AppCompatActivity() {
