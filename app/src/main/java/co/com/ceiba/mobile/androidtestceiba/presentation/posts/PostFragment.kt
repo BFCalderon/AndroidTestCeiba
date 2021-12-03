@@ -1,4 +1,4 @@
-package co.com.ceiba.mobile.androidtestceiba.ui.main
+package co.com.ceiba.mobile.androidtestceiba.presentation.posts
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
