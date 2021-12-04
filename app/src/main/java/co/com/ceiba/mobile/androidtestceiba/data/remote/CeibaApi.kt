@@ -8,7 +8,6 @@ import co.com.ceiba.mobile.androidtestceiba.data.remote.dto.UserDto
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.POST
 import retrofit2.http.Query
 
 fun provideMercadoLibreApi(): CeibaApi {
@@ -27,7 +26,7 @@ interface CeibaApi {
   /**
    * Función que trae la lista de usuarios
    */
-  @POST(GET_USERS)
+  @GET(GET_USERS)
   suspend fun getUsers(): List<UserDto>
 
   /**
