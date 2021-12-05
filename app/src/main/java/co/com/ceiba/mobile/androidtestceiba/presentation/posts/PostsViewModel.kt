@@ -8,6 +8,8 @@ import co.com.ceiba.mobile.androidtestceiba.common.Resource
 import co.com.ceiba.mobile.androidtestceiba.domain.models.PostsEntity
 import co.com.ceiba.mobile.androidtestceiba.domain.use_case.get_posts.GetPostsUseCase
 import co.com.ceiba.mobile.androidtestceiba.common.DataState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -15,7 +17,8 @@ import kotlinx.coroutines.flow.onEach
  * Viewmodel que se encarga de los datos para los posts
  * @param postsUseCase caso de uso de los posts
  */
-class PostsViewModel(
+@HiltViewModel
+class PostsViewModel @Inject constructor(
   private val postsUseCase : GetPostsUseCase
 ): ViewModel() {
 

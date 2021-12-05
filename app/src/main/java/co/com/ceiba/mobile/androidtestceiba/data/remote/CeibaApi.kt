@@ -2,21 +2,10 @@ package co.com.ceiba.mobile.androidtestceiba.data.remote
 
 import co.com.ceiba.mobile.androidtestceiba.common.EndPoints.GET_POST_USER
 import co.com.ceiba.mobile.androidtestceiba.common.EndPoints.GET_USERS
-import co.com.ceiba.mobile.androidtestceiba.common.EndPoints.URL_BASE
 import co.com.ceiba.mobile.androidtestceiba.data.remote.dto.PostDto
 import co.com.ceiba.mobile.androidtestceiba.data.remote.dto.UserDto
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
-
-fun provideMercadoLibreApi(): CeibaApi {
-  return Retrofit.Builder()
-    .baseUrl(URL_BASE)
-    .addConverterFactory(GsonConverterFactory.create())
-    .build()
-    .create(CeibaApi::class.java)
-}
 
 /**
  * Interfaz mediante la cual se definen los metodos de consulta al API

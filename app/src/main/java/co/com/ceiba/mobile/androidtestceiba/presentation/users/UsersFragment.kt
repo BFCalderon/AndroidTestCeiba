@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import co.com.ceiba.mobile.androidtestceiba.R
 import co.com.ceiba.mobile.androidtestceiba.databinding.UsersFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+@AndroidEntryPoint
 class UsersFragment: Fragment() {
 
   private var _binding : UsersFragmentBinding? = null

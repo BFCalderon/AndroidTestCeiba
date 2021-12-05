@@ -8,7 +8,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import co.com.ceiba.mobile.androidtestceiba.R
 import co.com.ceiba.mobile.androidtestceiba.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity: AppCompatActivity() {
 
   private lateinit var appBarConfiguration : AppBarConfiguration

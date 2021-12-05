@@ -10,6 +10,7 @@ import co.com.ceiba.mobile.androidtestceiba.data.remote.dto.getUsersEntity
 import co.com.ceiba.mobile.androidtestceiba.domain.models.PostsEntity
 import co.com.ceiba.mobile.androidtestceiba.domain.models.UsersEntity
 import co.com.ceiba.mobile.androidtestceiba.domain.repository_definition.UsersRepository
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.count
 
@@ -17,7 +18,7 @@ import kotlinx.coroutines.flow.count
  * Implementacion real del repositorio que hace las transacciones entre el Api y la base de datos local
  * @param usersApi Instancia del Api que consume los servicios
  */
-class UsersRepositoryImplementation(
+class UsersRepositoryImplementation @Inject constructor (
   private val usersApi : CeibaApi,
   private val usersDao : UserDao,
   private val postDao : PostDao

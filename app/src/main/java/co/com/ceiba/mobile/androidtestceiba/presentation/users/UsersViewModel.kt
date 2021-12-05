@@ -8,6 +8,8 @@ import co.com.ceiba.mobile.androidtestceiba.common.Resource
 import co.com.ceiba.mobile.androidtestceiba.domain.models.UsersEntity
 import co.com.ceiba.mobile.androidtestceiba.domain.use_case.get_users.GetUsersUseCase
 import co.com.ceiba.mobile.androidtestceiba.common.DataState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -15,7 +17,8 @@ import kotlinx.coroutines.flow.onEach
  * ViewModel para la aduisición de datos de los usuarios
  * @param usersUseCase caso de uso de los usuarios
  */
-class UsersViewModel(
+@HiltViewModel
+class UsersViewModel @Inject constructor(
   private val usersUseCase : GetUsersUseCase
 ): ViewModel(){
 
