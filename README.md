@@ -10,6 +10,7 @@ Ejercicio de ingreso android para Ceiba.
   * Room
   * Binding
   * Navigation
+  * Lineamientos gitflow
   
 ## Alcance
   El alcance de la actual App abarcó como anteriormente se especificó diferentes tecnologias y conocimientos, entre ellos se cuentan los casos de uso,
