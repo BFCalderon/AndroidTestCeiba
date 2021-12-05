@@ -1,6 +1,6 @@
 package co.com.ceiba.mobile.androidtestceiba.data.remote.dto
 
-import co.com.ceiba.mobile.androidtestceiba.domain.models.PostsEntity
+import co.com.ceiba.mobile.androidtestceiba.domain.models.Post
 
 /**
  * Modelo de datos que llegan del servicio de tipo post
@@ -15,9 +15,9 @@ data class PostDto(
 /**
  * Función que transforma el objeto tipo lista de posts provenientes del api en un objeto de tipo posts entity
  */
-fun List<PostDto>.getPostsEntity(): List<PostsEntity> {
+fun List<PostDto>.getPostsEntity(): List<Post> {
     return map { postDto ->
-        PostsEntity(
+        Post(
             postId = postDto.id,
             userId = postDto.userId,
             postTitle = postDto.title,

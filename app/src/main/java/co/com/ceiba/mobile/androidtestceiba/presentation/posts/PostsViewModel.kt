@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.com.ceiba.mobile.androidtestceiba.common.Resource
-import co.com.ceiba.mobile.androidtestceiba.domain.models.PostsEntity
+import co.com.ceiba.mobile.androidtestceiba.domain.models.Post
 import co.com.ceiba.mobile.androidtestceiba.domain.use_case.get_posts.GetPostsUseCase
 import co.com.ceiba.mobile.androidtestceiba.common.DataState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,8 +22,8 @@ class PostsViewModel @Inject constructor(
   private val postsUseCase : GetPostsUseCase
 ): ViewModel() {
 
-  private val _postsState = MutableLiveData<DataState<List<PostsEntity>>>(DataState())
-  val postsState: LiveData<DataState<List<PostsEntity>>> = _postsState
+  private val _postsState = MutableLiveData<DataState<List<Post>>>(DataState())
+  val postsState: LiveData<DataState<List<Post>>> = _postsState
 
   /**
    * Funcion que obtiene la lista de usuarios
@@ -31,7 +31,7 @@ class PostsViewModel @Inject constructor(
   fun getPosts(userId: Int) {
     postsUseCase(userId).onEach { resource ->
       when (resource) {
-        is Resource.Success -> _postsState.value = DataState(posts = resource.data)
+        is Resource.Success -> _postsState.value = DataState(data = resource.data)
         is Resource.Loading -> _postsState.value = DataState(isLoading = true)
         is Resource.Error -> _postsState.value = DataState(error = resource.message ?: "ERROR INESPERADO")
       }

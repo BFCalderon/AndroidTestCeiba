@@ -4,14 +4,14 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import co.com.ceiba.mobile.androidtestceiba.data.local.daos.PostDao
 import co.com.ceiba.mobile.androidtestceiba.data.local.daos.UserDao
-import co.com.ceiba.mobile.androidtestceiba.domain.models.PostsEntity
-import co.com.ceiba.mobile.androidtestceiba.domain.models.UsersEntity
+import co.com.ceiba.mobile.androidtestceiba.domain.models.Post
+import co.com.ceiba.mobile.androidtestceiba.domain.models.User
 
 /**
  * Se crea la estructura de la base de datos, se asocian las tablas y se integran los daos
  */
 @Database(
-  entities = [UsersEntity::class, PostsEntity::class], version = 1
+  entities = [User::class, Post::class], version = 1
 )
 abstract class CeibaDatabase: RoomDatabase() {
 

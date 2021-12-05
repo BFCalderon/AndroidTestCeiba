@@ -1,8 +1,7 @@
 package co.com.ceiba.mobile.androidtestceiba.domain.repository_definition
 
-import co.com.ceiba.mobile.androidtestceiba.domain.models.PostsEntity
-import co.com.ceiba.mobile.androidtestceiba.domain.models.UsersEntity
-import kotlinx.coroutines.flow.Flow
+import co.com.ceiba.mobile.androidtestceiba.domain.models.Post
+import co.com.ceiba.mobile.androidtestceiba.domain.models.User
 
 /**
  * Definición de los métodos que estructuraran el repositorio y separación de la implementación para
@@ -12,15 +11,15 @@ interface UsersRepository {
   /**
    * Método que hace la consulta de la lista de usuarios
    */
-  suspend fun getUsers(): Flow<List<UsersEntity>>
+  suspend fun getUsers(): List<User>
 
   /**
    * Método que hace la consulta de la lista de usuarios
    */
-  suspend fun getFilteredUsers(filterName: String): Flow<List<UsersEntity>>
+  suspend fun getFilteredUsers(filterName: String): List<User>
 
   /**
    * Metodo que hace la consulta al servicio de los post corrspondientes al usuarios especificado mediante el Id
    */
-  suspend fun getPostByUserId(userId: Int): Flow<List<PostsEntity>>
+  suspend fun getPostByUserId(userId: Int): List<Post>
 }

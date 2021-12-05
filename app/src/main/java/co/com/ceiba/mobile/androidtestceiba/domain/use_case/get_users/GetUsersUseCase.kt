@@ -2,14 +2,11 @@ package co.com.ceiba.mobile.androidtestceiba.domain.use_case.get_users
 
 import co.com.ceiba.mobile.androidtestceiba.common.Resource
 import co.com.ceiba.mobile.androidtestceiba.data.repository_implementation.UsersRepositoryImplementation
-import co.com.ceiba.mobile.androidtestceiba.domain.models.UsersEntity
+import co.com.ceiba.mobile.androidtestceiba.domain.models.User
 import java.io.IOException
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.toList
 import retrofit2.HttpException
 
 /**
@@ -24,18 +21,18 @@ class GetUsersUseCase @Inject constructor(
    * Operador que ejecuta la consulta de los usuarios segun las validaciones
    * @param filterName String que sirve de filtro para consultar los usuarios
    */
-  operator fun invoke(filterName : String? = null) : Flow<Resource<List<UsersEntity>>> = flow {
+  operator fun invoke(filterName : String? = null) : Flow<Resource<List<User>>> = flow {
     try {
-      emit(Resource.Loading<List<UsersEntity>>())
+      emit(Resource.Loading<List<User>>())
       val users = when(filterName) {
         null -> repository.getUsers()
         else -> repository.getFilteredUsers(filterName)
-      }.flatMapConcat { it.asFlow() }.toList()
-      emit(Resource.Success<List<UsersEntity>>(users))
+      }
+      emit(Resource.Success<List<User>>(users))
     } catch( e: HttpException) {
-      emit(Resource.Error<List<UsersEntity>>(e.localizedMessage ?: "ERROR DE RED INESPERADO"))
+      emit(Resource.Error<List<User>>(e.localizedMessage ?: "ERROR DE RED INESPERADO"))
     } catch(e: IOException) {
-      emit(Resource.Error<List<UsersEntity>>("REVISA LA CONEXION A INTERNET"))
+      emit(Resource.Error<List<User>>("REVISA LA CONEXION A INTERNET"))
     }
   }
 }

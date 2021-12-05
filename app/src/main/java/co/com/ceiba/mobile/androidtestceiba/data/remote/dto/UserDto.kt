@@ -1,6 +1,6 @@
 package co.com.ceiba.mobile.androidtestceiba.data.remote.dto
 
-import co.com.ceiba.mobile.androidtestceiba.domain.models.UsersEntity
+import co.com.ceiba.mobile.androidtestceiba.domain.models.User
 
 /**
  * Modelo de datos que llega del API
@@ -19,10 +19,13 @@ data class UserDto(
 /**
  * Función que transforma el objeto proveniente del api en un objeto de tipo entity
  */
-fun List<UserDto>.getUsersEntity(): List<UsersEntity> {
+fun List<UserDto>.getUsersEntity(): List<User> {
     return map { userDto ->
-        UsersEntity(
-            userId = userDto.id, userName = userDto.name, userEmail = userDto.email
+        User(
+            userId = userDto.id,
+            userName = userDto.name,
+            userPhone = userDto.phone,
+            userEmail = userDto.email
         )
     }
 }
