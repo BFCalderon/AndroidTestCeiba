@@ -3,39 +3,35 @@ package co.com.ceiba.mobile.androidtestceiba.data.local.daos
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import co.com.ceiba.mobile.androidtestceiba.domain.models.UsersEntity
-import kotlinx.coroutines.flow.Flow
+import co.com.ceiba.mobile.androidtestceiba.domain.models.User
 
 /**
- * Dao que gestiona las consultas a la tabla [UsersEntity]
+ * Dao que gestiona las consultas a la tabla [User]
  */
 @Dao
 interface UserDao {
   /**
    * Función que obtiene todos los usuarios
    */
-  @Query("SELECT * FROM ${UsersEntity.TABLE_NAME}")
-  fun getAllUsers(): Flow<List<UsersEntity>>
+  @Query("SELECT * FROM ${User.TABLE_NAME}")
+  suspend fun getAllUsers(): List<User>
 
   /**
    * Función que obtiene todos los usuarios
    */
-  @Query("SELECT * FROM ${UsersEntity.TABLE_NAME} WHERE ${UsersEntity.USER_NAME} LIKE :filterName")
-  fun getFilteredUsers(filterName: String): Flow<List<UsersEntity>>
+  @Query("SELECT * FROM ${User.TABLE_NAME} WHERE ${User.USER_NAME} LIKE '%' || :filterName || '%' ")
+  suspend fun getFilteredUsers(filterName: String): List<User>
 
   /**
    * Función que inserta la lista de usuarios provenientes del servicio
    */
   @Insert
-/*(onConflict = OnConflictStrategy.REPLACE)*///TODO BFCalderon: validar si es necesaria esta validacion
-  suspend fun insertUsers(users: List<UsersEntity>)
+  suspend fun insertUsers(users: List<User>)
 
   /**
-   * Función que obtiene todos los usuarios
+   * Función que obtiene cuantos usuarios existen en la tabla
    */
-  @Query("SELECT COUNT(*) FROM ${UsersEntity.TABLE_NAME}")//TODO BFCalderon: Validar si se puede reemplazar por otro metodo
-  fun tableIsEmpty(): Int
-
-
+  @Query("SELECT COUNT(*) FROM ${User.TABLE_NAME}")
+  suspend fun tableIsEmpty(): Int
 
 }

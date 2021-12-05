@@ -7,12 +7,10 @@ import co.com.ceiba.mobile.androidtestceiba.data.remote.dto.PostDto
 import co.com.ceiba.mobile.androidtestceiba.data.remote.dto.UserDto
 import co.com.ceiba.mobile.androidtestceiba.data.remote.dto.getPostsEntity
 import co.com.ceiba.mobile.androidtestceiba.data.remote.dto.getUsersEntity
-import co.com.ceiba.mobile.androidtestceiba.domain.models.PostsEntity
-import co.com.ceiba.mobile.androidtestceiba.domain.models.UsersEntity
+import co.com.ceiba.mobile.androidtestceiba.domain.models.Post
+import co.com.ceiba.mobile.androidtestceiba.domain.models.User
 import co.com.ceiba.mobile.androidtestceiba.domain.repository_definition.UsersRepository
 import javax.inject.Inject
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.count
 
 /**
  * Implementacion real del repositorio que hace las transacciones entre el Api y la base de datos local
@@ -24,26 +22,29 @@ class UsersRepositoryImplementation @Inject constructor (
   private val postDao : PostDao
 ): UsersRepository {
 
-  override suspend fun getUsers() : Flow<List<UsersEntity>> {
-    val users = usersDao.getAllUsers()
-    if(users.count() == 0) {
-      val usersApi: List<UserDto> = usersApi.getUsers()
-      usersDao.insertUsers(usersApi.getUsersEntity())
-    }
-    return users
+  override suspend fun getUsers() : List<User> {
+    refreshUser()
+    return usersDao.getAllUsers()
   }
 
-  override suspend fun getFilteredUsers(filterName: String) : Flow<List<UsersEntity>> {
+  private suspend fun refreshUser() {
+    if(usersDao.tableIsEmpty() == 0) {
+      val postsApi: List<PostDto> = usersApi.getAllPost()
+      val usersApi: List<UserDto> = usersApi.getUsers()
+      usersDao.insertUsers(usersApi.getUsersEntity())
+      postDao.insertPosts(postsApi.getPostsEntity())
+    }
+  }
+
+  override suspend fun getFilteredUsers(filterName: String) : List<User> {
     return usersDao.getFilteredUsers(filterName)
   }
 
-  override suspend fun getPostByUserId(userId : Int) : Flow<List<PostsEntity>> {
-    val postByUserId = postDao.getPostByUserId(userId)
-    if(postByUserId.count() == 0) {
-      val postsApi: List<PostDto> = usersApi.getPostUserById(userId)
-      postDao.insertPosts(postsApi.getPostsEntity())
+  override suspend fun getPostByUserId(userId : Int) : List<Post> {
+    val postQuantity = postDao.tableIsEmpty()
+    if(postQuantity == 0) {
     }
-    return postByUserId
+    return postDao.getPostByUserId(userId)
   }
 
 }

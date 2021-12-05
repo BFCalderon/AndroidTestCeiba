@@ -8,6 +8,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import co.com.ceiba.mobile.androidtestceiba.R
 import co.com.ceiba.mobile.androidtestceiba.databinding.ActivityMainBinding
+import com.facebook.stetho.Stetho
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,7 +29,7 @@ class MainActivity: AppCompatActivity() {
     appBarConfiguration = AppBarConfiguration(navController.graph)
     setupActionBarWithNavController(navController, appBarConfiguration)
 
-//    supportFragmentManager.beginTransaction().replace(R.id.container, MainFragment.newInstance()).commitNow()
+    Stetho.initializeWithDefaults(this)
   }
 
   override fun onSupportNavigateUp() : Boolean {

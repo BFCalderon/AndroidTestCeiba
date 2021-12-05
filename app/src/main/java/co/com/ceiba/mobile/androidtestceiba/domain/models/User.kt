@@ -10,16 +10,18 @@ import androidx.room.PrimaryKey
  * @param userName Nombre del usuario
  * @param userEmail Correo del usuario
  */
-@Entity(tableName = UsersEntity.TABLE_NAME)
-data class UsersEntity (
+@Entity(tableName = User.TABLE_NAME)
+data class User (
   @ColumnInfo(name = USER_ID) @PrimaryKey val userId: Int,
   @ColumnInfo(name = USER_NAME) val userName: String,
+  @ColumnInfo(name = USER_PHONE) val userPhone: String,
   @ColumnInfo(name = USER_EMAIL) val userEmail: String
 ) {
   companion object {
     const val TABLE_NAME = "USERS"
     const val USER_ID = "ID"
     const val USER_NAME = "NAME"
+    const val USER_PHONE = "PHONE"
     const val USER_EMAIL = "EMAIL"
   }
 }

@@ -8,21 +8,21 @@ import androidx.room.PrimaryKey
 /**
  * Definición de las relaciones y llaves foraneas
  */
-@Entity(tableName = PostsEntity.TABLE_NAME,
+@Entity(tableName = Post.TABLE_NAME,
   foreignKeys = [ForeignKey(
-    entity = UsersEntity::class,
-    parentColumns = [UsersEntity.USER_ID],
-    childColumns = [PostsEntity.USER_ID],
+    entity = User::class,
+    parentColumns = [User.USER_ID],
+    childColumns = [Post.USER_ID],
   )]
 )
 /**
  * Objeto mediante el cual se hace la definición de la tabla que modela los post en la BD
  * @param postId Identificador del post en la BD proveído por el servicio
- * @param userId Id del usuario que sirve como llave forane para relacionarla con [UsersEntity]
+ * @param userId Id del usuario que sirve como llave forane para relacionarla con [User]
  * @param postTitle Titulo del post
  * @param postBody Cuerpo del post
  */
-data class PostsEntity (
+data class Post (
   @PrimaryKey val postId: Int,
   @ColumnInfo(name = USER_ID) val userId: Int,
   @ColumnInfo(name = POST_TITLE) val postTitle: String,
