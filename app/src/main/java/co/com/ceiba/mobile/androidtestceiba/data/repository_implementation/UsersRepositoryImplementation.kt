@@ -37,13 +37,11 @@ class UsersRepositoryImplementation @Inject constructor (
   }
 
   override suspend fun getFilteredUsers(filterName: String) : List<User> {
+    refreshUser()
     return usersDao.getFilteredUsers(filterName)
   }
 
   override suspend fun getPostByUserId(userId : Int) : List<Post> {
-    val postQuantity = postDao.tableIsEmpty()
-    if(postQuantity == 0) {
-    }
     return postDao.getPostByUserId(userId)
   }
 
