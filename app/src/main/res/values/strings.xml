@@ -12,8 +12,7 @@
 	<string name="first_fragment_label">Users Fragment</string>
 	<string name="second_fragment_label">Post Fragment</string>
 	<string name="next">Next</string>
-	<string name="previous">Previous</string>
+	<string name="loading">Cargando. Por favor espere...</string>
+	<string name="try_again">Recargar</string>
 
-	<string name="hello_first_fragment">Hello first fragment</string>
-	<string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

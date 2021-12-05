@@ -7,17 +7,43 @@
 
 	<fragment
 		android:id="@+id/UsersFragment"
-		android:name="co.com.ceiba.mobile.androidtestceiba.ui.main.UsersFragment"
+		android:name="co.com.ceiba.mobile.androidtestceiba.presentation.users.UsersFragment"
 		android:label="@string/first_fragment_label"
 		tools:layout="@layout/users_fragment">
 
 		<action
 			android:id="@+id/action_FirstFragment_to_SecondFragment"
-			app:destination="@id/PostFragment" />
+			app:destination="@id/PostFragment" >
+			<argument
+				android:name="userId"
+				app:argType="integer" />
+			<argument
+				android:name="userName"
+				app:argType="string" />
+			<argument
+				android:name="userPhone"
+				app:argType="string" />
+			<argument
+				android:name="userEmail"
+				app:argType="string" />
+		</action>
 	</fragment>
 	<fragment
 		android:id="@+id/PostFragment"
-		android:name="co.com.ceiba.mobile.androidtestceiba.ui.main.PostFragment"
+		android:name="co.com.ceiba.mobile.androidtestceiba.presentation.posts.PostFragment"
 		android:label="@string/second_fragment_label"
-		tools:layout="@layout/fragment_post"/>
+		tools:layout="@layout/fragment_post">
+		<argument
+			android:name="userId"
+			app:argType="integer" />
+		<argument
+			android:name="userName"
+			app:argType="string" />
+		<argument
+			android:name="userPhone"
+			app:argType="string" />
+		<argument
+			android:name="userEmail"
+			app:argType="string" />
+	</fragment>
 </navigation>
