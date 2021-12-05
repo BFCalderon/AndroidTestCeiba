@@ -6,6 +6,7 @@ import co.com.ceiba.mobile.androidtestceiba.common.EndPoints
 import co.com.ceiba.mobile.androidtestceiba.data.local.database.CeibaDatabase
 import co.com.ceiba.mobile.androidtestceiba.data.remote.CeibaApi
 import co.com.ceiba.mobile.androidtestceiba.data.repository_implementation.UsersRepositoryImplementation
+import co.com.ceiba.mobile.androidtestceiba.domain.repository_definition.UsersRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -55,7 +56,7 @@ object AppModule {
   fun provideUsersRepositoryImplementation(
     ceibaApi : CeibaApi,
     ceibaDatabase : CeibaDatabase
-  ) : UsersRepositoryImplementation {
+  ) : UsersRepository {
     return UsersRepositoryImplementation(ceibaApi, ceibaDatabase.userDao, ceibaDatabase.postDaoDao)
   }
 }
