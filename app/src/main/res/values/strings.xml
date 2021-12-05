@@ -13,5 +13,6 @@
 	<string name="second_fragment_label">Post Fragment</string>
 	<string name="next">Next</string>
 	<string name="loading">Cargando. Por favor espere...</string>
+	<string name="try_again">Recargar</string>
 
 </resources>

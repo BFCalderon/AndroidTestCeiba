@@ -20,6 +20,7 @@ import co.com.ceiba.mobile.androidtestceiba.common.GenericAdapterRecyclerView
 import co.com.ceiba.mobile.androidtestceiba.databinding.UserListItemBinding
 import co.com.ceiba.mobile.androidtestceiba.databinding.UsersFragmentBinding
 import co.com.ceiba.mobile.androidtestceiba.domain.models.User
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -41,10 +42,10 @@ class UsersFragment: Fragment() {
     return binding.root
   }
 
-  override fun onCreate(savedInstanceState : Bundle?) {
-    super.onCreate(savedInstanceState)
-    alertDialog = ProgressDialog.show(
-      this.requireContext(), "", resources.getString(R.string.loading), true)
+  override fun onAttach(context : Context) {
+    super.onAttach(context)
+    alertDialog = ProgressDialog.show(this.requireContext(), "",
+      resources.getString(R.string.loading), true)
   }
 
   override fun onViewCreated(view : View, savedInstanceState : Bundle?) {
@@ -57,14 +58,22 @@ class UsersFragment: Fragment() {
    * Función que inicia el observador de los datos
    */
   private fun initDataObserver() {
+    var snackBar: Snackbar? = null
     viewModel.usersState.observe(viewLifecycleOwner, { dataState->
       dataState?.let { data ->
-        data.isLoading.showAlertDialog()
+        data.isLoading.showAlertDialog(data.data?.size ?: 0)
         data.data?.let { userList->
           showUsers(userList)
         }
         if(data.error.isNotEmpty()){
-          Toast.makeText(this.context, data.error, Toast.LENGTH_SHORT).show()
+          snackBar = Snackbar.make(
+            this@UsersFragment.requireView(), data.error, Snackbar.LENGTH_INDEFINITE
+          ).apply {
+            setAction(R.string.try_again) { viewModel.getUsers() }
+            show()
+          }
+        } else {
+          snackBar?.dismiss()
         }
       }
     })
@@ -97,14 +106,12 @@ class UsersFragment: Fragment() {
   /**
    * Funcion que muestra el dialogo de carga
    */
-  private fun Boolean.showAlertDialog() {
+  private fun Boolean.showAlertDialog(usersSize:Int) {
     when (this) {
       true -> alertDialog?.show()
-      false -> {
-        alertDialog?.cancel()
-        alertDialog = null
-      }
+      false -> alertDialog?.cancel()
     }
+    if(usersSize>0) alertDialog = null
   }
 
   /**

@@ -2,6 +2,7 @@ package co.com.ceiba.mobile.androidtestceiba.data.local.daos
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import co.com.ceiba.mobile.androidtestceiba.domain.models.User
 
@@ -25,7 +26,7 @@ interface UserDao {
   /**
    * Función que inserta la lista de usuarios provenientes del servicio
    */
-  @Insert
+  @Insert(onConflict = OnConflictStrategy.IGNORE)
   suspend fun insertUsers(users: List<User>)
 
   /**

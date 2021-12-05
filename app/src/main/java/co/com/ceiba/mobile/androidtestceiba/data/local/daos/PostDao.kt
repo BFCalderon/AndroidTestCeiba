@@ -2,6 +2,7 @@ package co.com.ceiba.mobile.androidtestceiba.data.local.daos
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import co.com.ceiba.mobile.androidtestceiba.domain.models.Post
 
@@ -21,12 +22,7 @@ interface PostDao {
   /**
    * Función que inserta la lista de usuarios provenientes del servicio
    */
-  @Insert
+  @Insert(onConflict = OnConflictStrategy.IGNORE)
   suspend fun insertPosts(users: List<Post>)
 
-  /**
-   * Función que obtiene cuantos post existen en la tabla
-   */
-  @Query("SELECT COUNT(*) FROM ${Post.TABLE_NAME}")
-  suspend fun tableIsEmpty(): Int
 }
