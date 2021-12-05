@@ -23,7 +23,7 @@ class GetUsersUseCase(
    * Operador que ejecuta la consulta de los usuarios segun las validaciones
    * @param filterName String que sirve de filtro para consultar los usuarios
    */
-  suspend operator fun invoke(filterName : String? = null) : Flow<Resource<List<UsersEntity>>> = flow {
+  operator fun invoke(filterName : String? = null) : Flow<Resource<List<UsersEntity>>> = flow {
     try {
       emit(Resource.Loading<List<UsersEntity>>())
       val users = when(filterName) {

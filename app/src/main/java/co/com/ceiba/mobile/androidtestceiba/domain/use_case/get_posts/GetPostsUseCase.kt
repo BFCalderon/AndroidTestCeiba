@@ -23,7 +23,7 @@ class GetPostsUseCase(
    * Operador que ejecuta la consulta de los posts asociados a un usuario
    * @param userId Id del usuario que se desea consultar
    */
-  suspend operator fun invoke(userId : Int) : Flow<Resource<List<PostsEntity>>> = flow {
+  operator fun invoke(userId : Int) : Flow<Resource<List<PostsEntity>>> = flow {
     try {
       emit(Resource.Loading<List<PostsEntity>>())
       val posts = repository.getPostByUserId(userId).flatMapConcat { it.asFlow() }.toList()
