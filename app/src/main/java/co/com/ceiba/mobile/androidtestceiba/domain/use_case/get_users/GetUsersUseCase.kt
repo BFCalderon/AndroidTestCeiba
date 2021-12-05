@@ -1,9 +1,10 @@
 package co.com.ceiba.mobile.androidtestceiba.domain.use_case.get_users
 
 import co.com.ceiba.mobile.androidtestceiba.common.Resource
+import co.com.ceiba.mobile.androidtestceiba.data.repository_implementation.UsersRepositoryImplementation
 import co.com.ceiba.mobile.androidtestceiba.domain.models.UsersEntity
-import co.com.ceiba.mobile.androidtestceiba.domain.repository_definition.UsersRepository
 import java.io.IOException
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.flatMapConcat
@@ -15,8 +16,8 @@ import retrofit2.HttpException
  * Caso de uso para obtener el listado de usuarios en la BD
  * @param repository Instancia del repositorio
  */
-class GetUsersUseCase(
-  private val repository : UsersRepository
+class GetUsersUseCase @Inject constructor(
+  private val repository : UsersRepositoryImplementation
 ) {
 
   /**

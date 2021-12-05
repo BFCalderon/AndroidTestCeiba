@@ -1,8 +1,6 @@
 package co.com.ceiba.mobile.androidtestceiba.data.local.database
 
-import android.app.Application
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import co.com.ceiba.mobile.androidtestceiba.data.local.daos.PostDao
 import co.com.ceiba.mobile.androidtestceiba.data.local.daos.UserDao
@@ -21,21 +19,6 @@ abstract class CeibaDatabase: RoomDatabase() {
   abstract val postDaoDao : PostDao
 
   companion object {
-    private const val DATABASE_NAME = "CEIBA_BD"
-
-    @Volatile
-    private var INSTANCE : CeibaDatabase? = null
-
-    /**
-     * Funcion que crea la instancia singleton de la base de datos
-     */
-    fun getInstance(context : Application) : CeibaDatabase? {
-      INSTANCE ?: synchronized(this) {
-        INSTANCE = Room.databaseBuilder(
-          context, CeibaDatabase::class.java, DATABASE_NAME
-        ).build()
-      }
-      return INSTANCE
-    }
+    const val DATABASE_NAME = "CEIBA_BD"
   }
 }
