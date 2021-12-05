@@ -1,8 +1,8 @@
 package co.com.ceiba.mobile.androidtestceiba.domain.use_case.get_users
 
 import co.com.ceiba.mobile.androidtestceiba.common.Resource
-import co.com.ceiba.mobile.androidtestceiba.data.repository_implementation.UsersRepositoryImplementation
 import co.com.ceiba.mobile.androidtestceiba.domain.models.User
+import co.com.ceiba.mobile.androidtestceiba.domain.repository_definition.UsersRepository
 import java.io.IOException
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
@@ -14,7 +14,7 @@ import retrofit2.HttpException
  * @param repository Instancia del repositorio
  */
 class GetUsersUseCase @Inject constructor(
-  private val repository : UsersRepositoryImplementation
+  private val repository : UsersRepository
 ) {
 
   /**
