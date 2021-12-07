@@ -16,7 +16,7 @@ import co.com.ceiba.mobile.androidtestceiba.domain.models.User
 abstract class CeibaDatabase: RoomDatabase() {
 
   abstract val userDao : UserDao
-  abstract val postDaoDao : PostDao
+  abstract val postDao : PostDao
 
   companion object {
     const val DATABASE_NAME = "CEIBA_BD"

@@ -25,4 +25,9 @@ interface PostDao {
   @Insert(onConflict = OnConflictStrategy.IGNORE)
   suspend fun insertPosts(users: List<Post>)
 
+  /**
+   * Función que obtiene la cantidad de posts existen en la tabla
+   */
+  @Query("SELECT COUNT(*) FROM ${Post.TABLE_NAME}")
+  suspend fun getPostsQuantity(): Int
 }

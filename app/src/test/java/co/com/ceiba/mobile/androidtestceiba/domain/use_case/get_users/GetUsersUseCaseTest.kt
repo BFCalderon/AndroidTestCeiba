@@ -2,7 +2,7 @@ package co.com.ceiba.mobile.androidtestceiba.domain.use_case.get_users
 
 import co.com.ceiba.mobile.androidtestceiba.data.repository_implementation.UsersRepositoryFakeImplementationTest
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -18,13 +18,15 @@ class GetUsersUseCaseTest {
   }
 
   @Test
-  fun `prueba para obtener todos los usuarios`() = runBlockingTest {
-      val allUsers = getUsersUseCase()
+  @Throws(Exception::class)
+  fun `prueba para obtener todos los usuarios`() = runBlocking {
+    val allUsers = getUsersUseCase()
     Assert.assertEquals(3, allUsers.first().data?.size)
   }
 
   @Test
-  fun `prueba para obtener los usuarios mediante el filtro`() = runBlockingTest {
+  @Throws(Exception::class)
+  fun `prueba para obtener los usuarios mediante el filtro`() = runBlocking {
     val filterUsers = getUsersUseCase("El")
     Assert.assertEquals(1, filterUsers.first().data?.size)
   }
