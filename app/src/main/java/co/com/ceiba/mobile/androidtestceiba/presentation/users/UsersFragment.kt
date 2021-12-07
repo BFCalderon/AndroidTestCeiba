@@ -83,6 +83,11 @@ class UsersFragment: Fragment() {
    * Funcion que muestra los usuarios en el recycler view
    */
   private fun showUsers(userList: List<User>) {
+    if(userList.isEmpty()){
+      binding.emptyView.root.visibility = View.VISIBLE
+    } else {
+      binding.emptyView.root.visibility = View.GONE
+    }
     binding.recyclerViewSearchResults.adapter = GenericAdapterRecyclerView(
       dataset = userList,
       itemViewFactory = { UserContainer(this.requireContext()) }
