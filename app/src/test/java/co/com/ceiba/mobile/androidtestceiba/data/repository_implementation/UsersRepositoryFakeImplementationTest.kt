@@ -27,7 +27,7 @@ class UsersRepositoryFakeImplementationTest : UsersRepository {
   override suspend fun getFilteredUsers(filterName : String) : List<User> {
     val filterUserList: MutableList<User> = mutableListOf()
     roomUsers.forEach { user->
-      if(user.userName.split(filterName).isNotEmpty()) {
+      if(user.userName.split(filterName).size > 1 && filterName != "") {
         filterUserList.add(user)
       }
     }
@@ -35,7 +35,7 @@ class UsersRepositoryFakeImplementationTest : UsersRepository {
   }
 
   override suspend fun getPostByUserId(userId : Int) : List<Post> {
-    return roomPosts
+    return roomPosts.filter { post -> post.userId == userId }
   }
 
 }
