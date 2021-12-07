@@ -30,9 +30,9 @@ interface UserDao {
   suspend fun insertUsers(users: List<User>)
 
   /**
-   * Función que obtiene cuantos usuarios existen en la tabla
+   * Función que obtiene la cantidad de usuarios existen en la tabla
    */
   @Query("SELECT COUNT(*) FROM ${User.TABLE_NAME}")
-  suspend fun tableIsEmpty(): Int
+  suspend fun getUsersQuantity(): Int
 
 }

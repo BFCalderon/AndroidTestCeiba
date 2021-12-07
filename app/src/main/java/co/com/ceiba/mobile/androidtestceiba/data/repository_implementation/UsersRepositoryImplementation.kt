@@ -28,7 +28,7 @@ class UsersRepositoryImplementation @Inject constructor (
   }
 
   private suspend fun refreshUser() {
-    if(usersDao.tableIsEmpty() == 0) {
+    if(usersDao.getUsersQuantity() == 0) {
       val postsApi: List<PostDto> = usersApi.getAllPost()
       val usersApi: List<UserDto> = usersApi.getUsers()
       usersDao.insertUsers(usersApi.getUsersEntity())
