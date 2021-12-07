@@ -57,6 +57,6 @@ object AppModule {
     ceibaApi : CeibaApi,
     ceibaDatabase : CeibaDatabase
   ) : UsersRepository {
-    return UsersRepositoryImplementation(ceibaApi, ceibaDatabase.userDao, ceibaDatabase.postDaoDao)
+    return UsersRepositoryImplementation(ceibaApi, ceibaDatabase.userDao, ceibaDatabase.postDao)
   }
 }
