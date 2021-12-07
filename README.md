@@ -1,6 +1,9 @@
 # AndroidTestCeiba
 Ejercicio de ingreso android para Ceiba.
 
+## Lenguaje
+ * Kotlin
+
 ## Arquitectura
   * MVVM
   
