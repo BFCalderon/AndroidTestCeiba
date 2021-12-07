@@ -8,6 +8,7 @@ import co.com.ceiba.mobile.androidtestceiba.data.local.database.CeibaDatabase
 import co.com.ceiba.mobile.androidtestceiba.domain.models.User
 import junit.framework.TestCase
 import kotlinx.coroutines.runBlocking
+import okio.IOException
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -39,6 +40,7 @@ class UserDaoTest: TestCase() {
   }
 
   @After
+  @Throws(IOException::class)
   fun teardown(){
     database.close()
   }
